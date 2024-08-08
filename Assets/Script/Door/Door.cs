@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
     public GameObject interactButton;
     public GameObject teleportTargetB;
-    public GameObject cameraObject;  // Referensi ke GameObject Kamera
+    public GameObject cameraObject;
     public GameObject cameraObject2;
+    [SerializeField] Button interactionButton;
 
     private bool canTeleport = false;
     private Animator anim;
@@ -15,6 +17,7 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        interactionButton.onClick.AddListener(OnTeleportButtonClicked);
     }
 
     // Teleport function
@@ -22,14 +25,10 @@ public class Door : MonoBehaviour
     {
         if (teleportTargetB != null)
         {
-            // Teleport the player to the position of GameObject B
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
                 player.transform.position = teleportTargetB.transform.position;
-
-                // Optionally, you can perform additional actions after teleportation
-                // For example, reset velocity or play a teleportation sound
             }
             else
             {
@@ -44,19 +43,9 @@ public class Door : MonoBehaviour
 
     private void MoveCamera()
     {
-        //// Move the camera to the specified position
-        //if (cameraObject != null)
-        //{
-        //    Vector3 newCameraPosition = cameraObject.transform.position;
-        //    newCameraPosition.y = -10.84f;
-        //    cameraObject.transform.position = newCameraPosition;
-        //}
-        //else
-        //{
-        //    Debug.LogWarning("Camera object not assigned!");
-        //}
         cameraObject.SetActive(false);
         cameraObject2.SetActive(true);
+
         if (cameraObject == null)
         {
             Debug.LogWarning("Camera object not assigned!");
@@ -91,14 +80,13 @@ public class Door : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnTeleportButtonClicked()
     {
-        // Check for "E" key press in the Update method
-        if (canTeleport && Input.GetKeyDown(KeyCode.E))
+        if (canTeleport)
         {
             TeleportToB();
-            MoveCamera(); // Pindahkan kamera hanya ketika tombol "E" ditekan
-            Debug.Log("teleport ke " + name);
+            MoveCamera();
+            Debug.Log("Teleported to " + name);
         }
     }
 }

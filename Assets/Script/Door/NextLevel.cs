@@ -21,10 +21,17 @@ public class NextLevel : MonoBehaviour
     [SerializeField] GameObject interactButton;
     [SerializeField] GameObject loadingCanvas;
     [SerializeField] Slider loadingSlider;
-
+    [SerializeField] Button interactionButton;
+    [SerializeField] GameObject[] objectToDisable;
+    [SerializeField] DynamicJoystick joystick;
     private int currScore;
     private Animator anim;
     private bool canTeleport = false;
+
+    private void Awake()
+    {
+        interactionButton.onClick.AddListener(OpenMenuButton);    
+    }
 
     private void Start()
     {
@@ -88,11 +95,20 @@ public class NextLevel : MonoBehaviour
         currScore = FindObjectOfType<PlayerStatus>().score;
     }
 
+    private void OpenMenuButton()
+    {
+        if (canTeleport)
+        {
+            OpenMenu();
+        }
+    }
+
     void OpenMenu()
     {
         endLevelPanel.SetActive(true);
         endLevelHolder.SetActive(true);
         endLevelScoreText.text = "" + FindObjectOfType<PlayerStatus>().score;
+        joystick.enabled = false;
 
         LeanTween.scale(endLevelHolder, new Vector3(1, 1, 1), 0.5f).setEase(LeanTweenType.easeOutBack).setIgnoreTimeScale(true);
 

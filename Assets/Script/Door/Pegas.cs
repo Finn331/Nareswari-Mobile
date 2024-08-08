@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pegas : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Pegas : MonoBehaviour
 
     [Header("Pegas Button")]
     [SerializeField] private GameObject pegasButton;
+    [SerializeField] Button interactionButton;
 
     [Header("Script Reference")]
     [SerializeField] private PlayerController playerController;
@@ -27,6 +29,7 @@ public class Pegas : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        interactionButton.onClick.AddListener(OnInteractionButtonClicked);
     }
 
     // Update is called once per frame
@@ -91,6 +94,14 @@ public class Pegas : MonoBehaviour
             LeanTween.scale(pegasButton, Vector3.zero, 0.3f)
                      .setEase(LeanTweenType.easeOutBack)
                      .setOnComplete(() => pegasButton.SetActive(false));
+        }
+    }
+
+    private void OnInteractionButtonClicked()
+    {
+        if (playerInTrigger)
+        {
+            KeyChecking();
         }
     }
 }

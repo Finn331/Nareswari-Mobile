@@ -27,7 +27,7 @@ public class LevelManager2 : MonoBehaviour
     [SerializeField] private PlayerController playerController2;
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private PlayerAttack playerAttack2;
-
+    [SerializeField] DynamicJoystick joystick;
     [Header("Audio Source Setting")]
     public AudioSource lavaAudioSource;
     [SerializeField] AudioClip buttonClick;
@@ -63,11 +63,9 @@ public class LevelManager2 : MonoBehaviour
         }
         isPaused = false;
         isGameover = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
 
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         if (Time.timeScale == 0)
         {
@@ -101,6 +99,7 @@ public class LevelManager2 : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         lavaAudioSource.enabled = false;
         AudioManager.instance.PlaySound(buttonClick);
+        joystick.enabled = false;
     }
 
     public void ResumeGame()
@@ -108,10 +107,9 @@ public class LevelManager2 : MonoBehaviour
         Time.timeScale = 1;
         pausePanel.SetActive(false);
         isPaused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         lavaAudioSource.enabled = true;
         AudioManager.instance.PlaySound(buttonClick);
+        joystick.enabled = true;
     }
 
     public void GameOver()
@@ -122,7 +120,7 @@ public class LevelManager2 : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         lavaAudioSource.enabled = false;
-
+        joystick.enabled = false;
     }
 
     public void RestartGame()
@@ -133,6 +131,7 @@ public class LevelManager2 : MonoBehaviour
         playerController2.enabled = true;
         playerAttack.enabled = true;
         playerAttack2.enabled = true;
+        joystick.enabled = true;
         AudioManager.instance.PlaySound(buttonClick);
         // Check if Player 1 or Player 2 is active and reset its position if so
         foreach (GameObject player in players)
@@ -152,8 +151,6 @@ public class LevelManager2 : MonoBehaviour
 
         isGameover = false;
         isPaused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         PlayerReference();
         SceneManager.LoadScene("Level 2");
     }

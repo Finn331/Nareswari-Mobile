@@ -13,7 +13,7 @@ public class PlayerStatus : MonoBehaviour
     private Animator anim;
     private float timerHurt = 1f;
     private float currTimer;
-    private PlayerController playerController; // Reference to PlayerController script
+    private PlayerController playerController;
     private Rigidbody2D rb;
 
     [Header("iFrames")]
@@ -24,7 +24,6 @@ public class PlayerStatus : MonoBehaviour
 
     [Header("Components")]
     public Component[] components;
-
 
     [Header("Score Setting")]
     public TextMeshProUGUI scoreText;
@@ -44,7 +43,6 @@ public class PlayerStatus : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
         spriteRend = GetComponent<SpriteRenderer>();
-        //score = PlayerPrefs.GetInt("Score", 0);
     }
 
     void Update()
@@ -61,15 +59,19 @@ public class PlayerStatus : MonoBehaviour
             TakeDamage(1);
         }
 
-        if (collision.gameObject.CompareTag("Lava"))
-        {
-            AudioManager.instance.PlaySound(ashLava);
-            currHealth = 0;
-        }
+        //if (collision.gameObject.CompareTag("Lava"))
+        //{
+        //    AudioManager.instance.PlaySound(ashLava);
+        //    currHealth = 0;
+        //}
     }
 
     public void Die()
     {
+        if (dead) return;
+
+        dead = true; // Set dead to true
+
         anim.SetTrigger("dead");
         anim.SetBool("isDead", true);
         anim.SetBool("isMoving", false);
@@ -88,11 +90,20 @@ public class PlayerStatus : MonoBehaviour
                 ((Behaviour)component).enabled = false;
             }
         }
+
+        AudioManager.instance.PlaySound(dieSound);
+
+        anim.ResetTrigger("hurt");
+        anim.ResetTrigger("hurt2");
+        anim.ResetTrigger("attack");
+        anim.ResetTrigger("jump");
+
     }
 
     public void TakeDamage(float _damage)
     {
-        if (invulnerable) return;
+        if (invulnerable || dead) return;
+
         currHealth = (int)Mathf.Clamp(currHealth - _damage, 0, maxHealth);
 
         if (currHealth > 0)
@@ -100,21 +111,17 @@ public class PlayerStatus : MonoBehaviour
             anim.SetTrigger("hurt");
             AudioManager.instance.PlaySound(hurtSound);
             StartCoroutine(Invunerability());
-            
         }
         else
         {
-            if (!dead)
-            {
-                Die();
-                dead = true;
-            }
+            Die();
         }
     }
 
     public void TakeDamage2(float _damage)
     {
-        if (invulnerable) return;
+        if (invulnerable || dead) return;
+
         currHealth = (int)Mathf.Clamp(currHealth - _damage, 0, maxHealth);
 
         if (currHealth > 0)
@@ -122,15 +129,10 @@ public class PlayerStatus : MonoBehaviour
             anim.SetTrigger("hurt2");
             AudioManager.instance.PlaySound(hurtSound);
             StartCoroutine(Invunerability());
-            
         }
         else
         {
-            if (!dead)
-            {
-                Die();
-                dead = true;
-            }
+            Die();
         }
     }
 
@@ -139,7 +141,6 @@ public class PlayerStatus : MonoBehaviour
         if (currHealth == 0 && !dead)
         {
             Die();
-            dead = true;
         }
     }
 
@@ -194,7 +195,6 @@ public class PlayerStatus : MonoBehaviour
         invulnerable = false;
     }
 
-    // Add this method to increase the score
     public void AddScore(int amount)
     {
         score += amount;

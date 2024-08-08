@@ -52,8 +52,6 @@ public class QuizSystem : MonoBehaviour
             levelManager3.isPaused = false;
         }
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         playerController.enabled = true;
         playerController2.enabled = true;
 
@@ -90,8 +88,6 @@ public class QuizSystem : MonoBehaviour
             levelManager3.isPaused = false;
         }
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         playerController.enabled = true;
         playerController2.enabled = true;
         GameObject.Destroy(quizTrigger);

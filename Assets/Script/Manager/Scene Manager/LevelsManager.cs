@@ -25,6 +25,7 @@ public class LevelsManager : MonoBehaviour
     public GameObject[] players;
     // GameObject to store the initial position
     public GameObject initialPosition;
+    [SerializeField] DynamicJoystick joystick;
 
     [Header("Player Script Reference")]
     [SerializeField] private PlayerController playerController;
@@ -72,7 +73,7 @@ public class LevelsManager : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
+        joystick.enabled = true;
         if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
@@ -99,8 +100,8 @@ public class LevelsManager : MonoBehaviour
 
     public void CloseCaraBermain()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         LeanTween.scale(caraBermainPanel, Vector3.zero, 0.5f).setEase(LeanTweenType.easeInOutBack).setOnComplete(() => caraBermainPanel.SetActive(false));
         StartCoroutine(DelayActivate());
@@ -116,6 +117,7 @@ public class LevelsManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         lavaAudioSource.enabled = false;
         AudioManager.instance.PlaySound(buttonClick);
+        joystick.enabled = false;
     }
 
     public void ResumeGame()
@@ -123,10 +125,9 @@ public class LevelsManager : MonoBehaviour
         Time.timeScale = 1;
         pausePanel.SetActive(false);
         isPaused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         lavaAudioSource.enabled = true;
         AudioManager.instance.PlaySound(buttonClick);
+        joystick.enabled = true;
     }
 
     public void GameOver()
@@ -137,7 +138,7 @@ public class LevelsManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         lavaAudioSource.enabled = false;
-        
+        joystick.enabled = false;
     }
 
     public void RestartGame()
@@ -149,6 +150,7 @@ public class LevelsManager : MonoBehaviour
         playerController2.enabled = true;
         playerAttack.enabled = true;
         playerAttack2.enabled = true;
+        joystick.enabled = true;
         AudioManager.instance.PlaySound(buttonClick);
         // Check if Player 1 or Player 2 is active and reset its position if so
         foreach (GameObject player in players)
@@ -168,8 +170,6 @@ public class LevelsManager : MonoBehaviour
 
         isGameover = false;
         isPaused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         PlayerReference();
         SceneManager.LoadScene("Level 1");
     }
@@ -226,8 +226,6 @@ public class LevelsManager : MonoBehaviour
             playerController2.enabled = true;
             playerAttack.enabled = true;
             playerAttack2.enabled = true;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (caraBermainPanel == null)
@@ -237,8 +235,6 @@ public class LevelsManager : MonoBehaviour
             playerController2.enabled = true;
             playerAttack.enabled = true;
             playerAttack2.enabled = true;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
