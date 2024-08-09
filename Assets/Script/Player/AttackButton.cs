@@ -7,7 +7,11 @@ public class AttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 {
     public PlayerAttack playerAttack;
     public PlayerAttack playerAttack2;
+    public PlayerStatus playerStatus; // Add reference to PlayerStatus
+    public PlayerStatus playerStatus2;
+
     bool isHold;
+
     private void Awake()
     {
         if (playerAttack == null)
@@ -17,23 +21,40 @@ public class AttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
         if (playerAttack2 == null)
         {
-            Debug.LogError("Player Attack is null");
-        }        
+            Debug.LogError("Player Attack2 is null");
+        }
+
+        if (playerStatus == null)
+        {
+            Debug.LogError("Player Status is null");
+        }
     }
 
     private void FixedUpdate()
     {
-        if (isHold == true)
+        // Check if player is alive before attacking
+        if (isHold && playerStatus != null && !playerStatus.dead)
         {
             playerAttack.AttackCheck();
+            if (playerAttack2 != null) // Check if playerAttack2 is assigned
+            {
+                playerAttack2.AttackCheck();
+            }
+        }
+
+        if (isHold && playerStatus2 != null && !playerStatus2.dead)
+        {
+            playerAttack2.AttackCheck();
+            if (playerAttack != null) // Check if playerAttack is assigned
+            {
+                playerAttack.AttackCheck();
+            }
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         isHold = true;
-
-        
         Debug.Log("Hold");
     }
 
@@ -41,5 +62,4 @@ public class AttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         isHold = false;
     }
-
 }

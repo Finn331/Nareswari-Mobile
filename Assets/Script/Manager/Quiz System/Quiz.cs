@@ -19,7 +19,7 @@ public class Quiz : MonoBehaviour
 
     private void Awake()
     {
-        // Mendaftarkan event handler untuk tombol interactionButton
+        // Registering event handler for the interactionButton
         interactionButton.onClick.AddListener(OnInteractionButtonClicked);
     }
 
@@ -38,6 +38,27 @@ public class Quiz : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E) && buttonInteract.activeSelf)
         {
             OpenQuizPanel();
+        }
+
+        HandleTouchInput();
+    }
+
+    private void HandleTouchInput()
+    {
+        if (playerInRange && Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+                if (hit.collider != null && hit.collider.gameObject == this.gameObject)
+                {
+                    OpenQuizPanel();
+                }
+            }
         }
     }
 

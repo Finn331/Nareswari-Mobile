@@ -20,6 +20,30 @@ public class Door : MonoBehaviour
         interactionButton.onClick.AddListener(OnTeleportButtonClicked);
     }
 
+    private void Update()
+    {
+        HandleTouchInput();
+    }
+
+    // Handle touch input
+    private void HandleTouchInput()
+    {
+        if (Input.touchCount > 0 && canTeleport)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+                if (hit.collider != null && hit.collider.gameObject == gameObject)
+                {
+                    OnTeleportButtonClicked();
+                }
+            }
+        }
+    }
+
     // Teleport function
     private void TeleportToB()
     {

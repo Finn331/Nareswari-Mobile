@@ -17,7 +17,7 @@ public class NextLevel : MonoBehaviour
     [SerializeField] TextMeshProUGUI endLevelScoreText;
 
     [Header("Setup")]
-    [SerializeField] int levelAdd; // menggunakan pertambahan seperti 1 atau 0
+    [SerializeField] int levelAdd; // using an increment like 1 or 0
     [SerializeField] GameObject interactButton;
     [SerializeField] GameObject loadingCanvas;
     [SerializeField] Slider loadingSlider;
@@ -30,7 +30,7 @@ public class NextLevel : MonoBehaviour
 
     private void Awake()
     {
-        interactionButton.onClick.AddListener(OpenMenuButton);    
+        interactionButton.onClick.AddListener(OpenMenuButton);
     }
 
     private void Start()
@@ -57,7 +57,6 @@ public class NextLevel : MonoBehaviour
                 if (playerStatus.score < scoreRequirement)
                 {
                     scoreText.gameObject.SetActive(true);
-                    //scoreText.text = "Score: " + playerStatus.score + "/" + scoreRequirement;
                     LeanTween.scale(scoreText.gameObject, new Vector3(1, 1, 1), 0.5f).setEase(LeanTweenType.easeOutBack);
                 }
             }
@@ -80,7 +79,7 @@ public class NextLevel : MonoBehaviour
             }
 
             if (playerStatus.score < scoreRequirement)
-            {                
+            {
                 LeanTween.scale(scoreText.gameObject, new Vector3(0, 0, 0), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() => scoreText.gameObject.SetActive(false));
             }
         }
@@ -92,7 +91,38 @@ public class NextLevel : MonoBehaviour
         {
             OpenMenu();
         }
+
+        HandleTouchInput();
+
         currScore = FindObjectOfType<PlayerStatus>().score;
+    }
+
+    private void HandleTouchInput()
+    {
+        if (canTeleport && Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                Vector2 touchPosition = Camera.main != null ? Camera.main.ScreenToWorldPoint(touch.position) : Vector2.zero;
+
+                // Check if the Camera.main was found
+                if (Camera.main == null)
+                {
+                    Debug.LogError("Main Camera is not found. Make sure the camera is tagged as 'MainCamera'.");
+                    return;
+                }
+
+                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+                // Check if a collider was hit
+                if (hit.collider != null && hit.collider.gameObject == this.gameObject)
+                {
+                    OpenMenu();
+                }
+            }
+        }
     }
 
     private void OpenMenuButton()

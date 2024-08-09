@@ -8,7 +8,7 @@ public class PlayerStatus : MonoBehaviour
     public int maxHealth;
     public int currHealth;
     public int damage;
-    private bool dead;
+    public bool dead;
 
     private Animator anim;
     private float timerHurt = 1f;
@@ -83,13 +83,7 @@ public class PlayerStatus : MonoBehaviour
         rb.angularVelocity = 0f;
         rb.isKinematic = true;
 
-        foreach (Component component in components)
-        {
-            if (component != this && component is Behaviour)
-            {
-                ((Behaviour)component).enabled = false;
-            }
-        }
+        DisableAllComponents();
 
         AudioManager.instance.PlaySound(dieSound);
 
@@ -97,7 +91,6 @@ public class PlayerStatus : MonoBehaviour
         anim.ResetTrigger("hurt2");
         anim.ResetTrigger("attack");
         anim.ResetTrigger("jump");
-
     }
 
     public void TakeDamage(float _damage)
@@ -110,7 +103,7 @@ public class PlayerStatus : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             AudioManager.instance.PlaySound(hurtSound);
-            StartCoroutine(Invunerability());
+            StartCoroutine(Invulnerability());
         }
         else
         {
@@ -128,7 +121,7 @@ public class PlayerStatus : MonoBehaviour
         {
             anim.SetTrigger("hurt2");
             AudioManager.instance.PlaySound(hurtSound);
-            StartCoroutine(Invunerability());
+            StartCoroutine(Invulnerability());
         }
         else
         {
@@ -158,16 +151,9 @@ public class PlayerStatus : MonoBehaviour
         rb.isKinematic = false;
         dead = false;
         EnableSprite();
+        EnableAllComponents();
         AudioManager.instance.PlaySound(respawnSound);
-        StartCoroutine(Invunerability());
-
-        foreach (Component component in components)
-        {
-            if (component != this && component is Behaviour)
-            {
-                ((Behaviour)component).enabled = true;
-            }
-        }
+        StartCoroutine(Invulnerability());
     }
 
     public void DisableSprite()
@@ -180,7 +166,7 @@ public class PlayerStatus : MonoBehaviour
         spriteRend.enabled = true;
     }
 
-    private IEnumerator Invunerability()
+    private IEnumerator Invulnerability()
     {
         invulnerable = true;
         Physics2D.IgnoreLayerCollision(10, 11, true);
@@ -199,5 +185,27 @@ public class PlayerStatus : MonoBehaviour
     {
         score += amount;
         Score(); // Update the score display
+    }
+
+    private void DisableAllComponents()
+    {
+        foreach (Component component in components)
+        {
+            if (component != this && component is Behaviour)
+            {
+                ((Behaviour)component).enabled = false;
+            }
+        }
+    }
+
+    private void EnableAllComponents()
+    {
+        foreach (Component component in components)
+        {
+            if (component != this && component is Behaviour)
+            {
+                ((Behaviour)component).enabled = true;
+            }
+        }
     }
 }
