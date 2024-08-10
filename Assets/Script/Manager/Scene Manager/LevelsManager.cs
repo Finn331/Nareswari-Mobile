@@ -219,14 +219,14 @@ public class LevelsManager : MonoBehaviour
 
     void CaraBermainChecking()
     {
-        if (caraBermainPanel != null && SaveManager.instance.level1Score >= 1)
-        {
-            caraBermainPanel.SetActive(false);
-            playerController.enabled = true;
-            playerController2.enabled = true;
-            playerAttack.enabled = true;
-            playerAttack2.enabled = true;
-        }
+        //if (caraBermainPanel != null && SaveManager.instance.level1Score >= 1)
+        //{
+        //    caraBermainPanel.SetActive(false);
+        //    playerController.enabled = true;
+        //    playerController2.enabled = true;
+        //    playerAttack.enabled = true;
+        //    playerAttack2.enabled = true;
+        //}
 
         if (caraBermainPanel == null)
         {

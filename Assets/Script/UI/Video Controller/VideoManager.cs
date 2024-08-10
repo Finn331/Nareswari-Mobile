@@ -76,7 +76,7 @@ public class VideoManager : MonoBehaviour
         videoPembelajaran1.SetActive(true);
         videoPlayer1.SetActive(true);
 
-        LeanTween.scale(videoPembelajaran1, new Vector3(1, 1, 1), 0.5f).setEase(LeanTweenType.easeOutBack);
+        LeanTween.scale(videoPembelajaran1, new Vector3(0.93811f, 0.93811f, 0.93811f), 0.5f).setEase(LeanTweenType.easeOutBack);
         AudioManager.instance.PlaySound(buttonClick);
     }
 
@@ -111,7 +111,7 @@ public class VideoManager : MonoBehaviour
         videoPembelajaran2.SetActive(true);
         videoPlayer2.SetActive(true);
 
-        LeanTween.scale(videoPembelajaran2, new Vector3(1, 1, 1), 0.5f).setEase(LeanTweenType.easeOutBack);
+        LeanTween.scale(videoPembelajaran2, new Vector3(0.93811f, 0.93811f, 0.93811f), 0.5f).setEase(LeanTweenType.easeOutBack);
         AudioManager.instance.PlaySound(buttonClick);
     }
 

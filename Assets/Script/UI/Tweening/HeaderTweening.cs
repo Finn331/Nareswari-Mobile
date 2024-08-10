@@ -18,6 +18,6 @@ public class HeaderTweening : MonoBehaviour
 
     private void StartScalingAnimation()
     {
-        LeanTween.scale(headerObject, new Vector3(1.1f, 1.1f, 1.1f), delaySpeed).setEase(tweenType).setLoopPingPong();
+        LeanTween.scale(headerObject, new Vector3(0.9f, 0.9f, 0.9f), delaySpeed).setEase(tweenType).setLoopPingPong();
     }
 }

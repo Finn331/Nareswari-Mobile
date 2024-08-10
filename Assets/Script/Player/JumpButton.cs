@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 
 public class JumpButton : MonoBehaviour, IPointerClickHandler
 {
-    public PlayerController playerController;
-    public PlayerController playerController2;
-    public PlayerStatus playerStatus; // Reference to PlayerStatus
+    [SerializeField] PlayerController playerController;
+    [SerializeField] PlayerController playerController2;
+    [SerializeField] PlayerStatus playerStatus; // Reference to PlayerStatus
+    [SerializeField] PlayerStatus playerStatus2;
 
     private void Awake()
     {
@@ -24,6 +25,11 @@ public class JumpButton : MonoBehaviour, IPointerClickHandler
         if (playerStatus == null)
         {
             Debug.LogError("Player Status is null");
+        }
+
+        if (playerStatus2 == null)
+        {
+            Debug.LogError("Player Status2 is null");
         }
     }
 

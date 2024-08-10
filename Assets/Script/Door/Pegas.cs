@@ -39,27 +39,48 @@ public class Pegas : MonoBehaviour
         {
             KeyChecking();
         }
+
+        // Check for touch input using Raycast2D
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+                if (hit.collider != null && hit.collider.gameObject == this.gameObject)
+                {
+                    PerformAction();
+                }
+            }
+        }
     }
 
     private void KeyChecking()
     {
+        // Handle keyboard input (for testing or if running on a non-touch device)
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (haveKey)
-            {
-                anim.SetTrigger("open");
-                penjaraAnim.SetTrigger("openPenjara");
-                playerController.speed = 0;
-                playerController2.speed = 0;
-                playerController.enabled = false;
-                playerController2.enabled = false;
+            PerformAction();
+        }
+    }
 
-                
-            }
-            else
-            {
-                ShowPegasText();
-            }
+    private void PerformAction()
+    {
+        if (haveKey)
+        {
+            anim.SetTrigger("open");
+            penjaraAnim.SetTrigger("openPenjara");
+            playerController.speed = 0;
+            playerController2.speed = 0;
+            playerController.enabled = false;
+            playerController2.enabled = false;
+        }
+        else
+        {
+            ShowPegasText();
         }
     }
 
@@ -101,7 +122,7 @@ public class Pegas : MonoBehaviour
     {
         if (playerInTrigger)
         {
-            KeyChecking();
+            PerformAction();
         }
     }
 }
