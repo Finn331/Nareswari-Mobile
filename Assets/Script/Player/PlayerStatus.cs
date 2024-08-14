@@ -59,11 +59,11 @@ public class PlayerStatus : MonoBehaviour
             TakeDamage(1);
         }
 
-        //if (collision.gameObject.CompareTag("Lava"))
-        //{
-        //    AudioManager.instance.PlaySound(ashLava);
-        //    currHealth = 0;
-        //}
+        if (collision.gameObject.CompareTag("Lava"))
+        {
+            Die();
+            currHealth = 0;
+        }
     }
 
     public void Die()
