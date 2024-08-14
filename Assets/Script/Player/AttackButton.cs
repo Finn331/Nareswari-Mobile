@@ -32,25 +32,19 @@ public class AttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private void FixedUpdate()
     {
-        // Check if player is alive before attacking
-        if (isHold && playerStatus != null && !playerStatus.dead)
+        // Check if player 1 is alive before attacking
+        if (isHold && playerStatus != null && !playerStatus.dead && playerAttack != null)
         {
             playerAttack.AttackCheck();
-            if (playerAttack2 != null) // Check if playerAttack2 is assigned
-            {
-                playerAttack2.AttackCheck();
-            }
         }
 
-        if (isHold && playerStatus2 != null && !playerStatus2.dead)
+        // Check if player 2 is alive before attacking
+        if (isHold && playerStatus2 != null && !playerStatus2.dead && playerAttack2 != null)
         {
             playerAttack2.AttackCheck();
-            if (playerAttack != null) // Check if playerAttack is assigned
-            {
-                playerAttack.AttackCheck();
-            }
         }
     }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {

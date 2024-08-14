@@ -1648,10 +1648,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1890771009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107112490
 MonoBehaviour:
@@ -1715,6 +1715,14 @@ PrefabInstance:
       propertyPath: quizTrigger
       value: 
       objectReference: {fileID: 824306039}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
@@ -2524,6 +2532,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1827725366}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
       objectReference: {fileID: 13845859}
@@ -2705,6 +2721,14 @@ PrefabInstance:
       propertyPath: quizTrigger
       value: 
       objectReference: {fileID: 873867069}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
@@ -5537,7 +5561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -446}
+  m_AnchoredPosition: {x: 0, y: -353}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438987030
@@ -11400,6 +11424,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1007937599}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
       objectReference: {fileID: 13845859}
@@ -12986,6 +13018,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1110043492}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
       objectReference: {fileID: 13845859}
@@ -14265,6 +14305,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963227695}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
       objectReference: {fileID: 13845859}
@@ -14471,6 +14519,14 @@ PrefabInstance:
       propertyPath: quizTrigger
       value: 
       objectReference: {fileID: 721863315}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
@@ -16611,21 +16667,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8844347899480360465, guid: f5ea8132d472e4d4a830e4503b691264, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8844347899480360465, guid: f5ea8132d472e4d4a830e4503b691264, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 13845859}
-    - target: {fileID: 8844347899480360465, guid: f5ea8132d472e4d4a830e4503b691264, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PauseGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 8844347899480360465, guid: f5ea8132d472e4d4a830e4503b691264, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelManager2, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18463,6 +18507,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1594660257}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
       objectReference: {fileID: 13845859}
@@ -19926,6 +19978,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 278721480}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
       objectReference: {fileID: 13845859}
@@ -20244,6 +20304,14 @@ PrefabInstance:
       propertyPath: quizTrigger
       value: 
       objectReference: {fileID: 2088620042}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuBenarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7c5cad4886de4c45b8f0bd4d9efd0f4, type: 3}
+    - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
+      propertyPath: kamuSalahClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9dcfa08fa3716a40a7448b6cfb6e447, type: 3}
     - target: {fileID: 5553218226149278403, guid: a8e5fc5f46c819d4085c78c9ddbd0a29, type: 3}
       propertyPath: levelManager2
       value: 
@@ -22518,7 +22586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -254, y: -355}
+  m_AnchoredPosition: {x: -254, y: -262}
   m_SizeDelta: {x: 432, y: 123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1836441299
