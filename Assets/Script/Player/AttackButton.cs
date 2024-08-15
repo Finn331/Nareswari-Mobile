@@ -10,6 +10,10 @@ public class AttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public PlayerStatus playerStatus; // Add reference to PlayerStatus
     public PlayerStatus playerStatus2;
 
+    [Header("Player Gameobject Reference")]
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject player2;
+
     bool isHold;
 
     private void Awake()
@@ -32,14 +36,15 @@ public class AttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private void FixedUpdate()
     {
+        
         // Check if player 1 is alive before attacking
-        if (isHold && playerStatus != null && !playerStatus.dead && playerAttack != null)
+        if (isHold && playerStatus != null && !playerStatus.dead && playerAttack != null && player.activeInHierarchy)
         {
             playerAttack.AttackCheck();
         }
 
         // Check if player 2 is alive before attacking
-        if (isHold && playerStatus2 != null && !playerStatus2.dead && playerAttack2 != null)
+        if (isHold && playerStatus2 != null && !playerStatus2.dead && playerAttack2 != null && player2.activeInHierarchy)
         {
             playerAttack2.AttackCheck();
         }

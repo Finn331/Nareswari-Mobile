@@ -21502,6 +21502,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 2089306497}
     m_Modifications:
     - target: {fileID: 1102501887706901832, guid: 702160131e44b5845925c417a34ef53d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1306313716}
+    - target: {fileID: 1102501887706901832, guid: 702160131e44b5845925c417a34ef53d, type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1127687328}
+    - target: {fileID: 1102501887706901832, guid: 702160131e44b5845925c417a34ef53d, type: 3}
       propertyPath: playerAttack
       value: 
       objectReference: {fileID: 1306313717}
