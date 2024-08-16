@@ -9,7 +9,8 @@ public class BossGFX : MonoBehaviour
     [Header("Reference")]
     [SerializeField] EnemyStatus enemyStatus; // enemyStatus reference
     [SerializeField] BossMelee bossMelee; // meleeEnemyAstar reference
-
+    [SerializeField] AIDestinationSetter aiDest;
+    [SerializeField] GameObject[] componentToDestroy;
     public GameObject barrier2;
     public GameObject barrier1;
     public AIPath aiPath;
@@ -41,9 +42,15 @@ public class BossGFX : MonoBehaviour
 
         if (enemyStatus.currHealth < 1)
         {
-            Destroy(gameObject);
-            Destroy(barrier2);
-            Destroy(barrier1);
+            isMoving = false;
+            anim.SetTrigger("dead");
+            aiPath.maxSpeed = 0;
+            anim.SetBool("isDead", true);
+            aiDest.enabled = false;
+            for (int i = 0; i < componentToDestroy.Length; i++)
+            {
+                Destroy(componentToDestroy[i]);
+            }
         }
     }
 
@@ -51,6 +58,11 @@ public class BossGFX : MonoBehaviour
     {
         Destroy(gameObject);
 
+    }
+
+    void DeadChangePos()
+    {
+        transform.position = new Vector2(transform.localPosition.x, -0.81f);
     }
 
     void PhaseChange()

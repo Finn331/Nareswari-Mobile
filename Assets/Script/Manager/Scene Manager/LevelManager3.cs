@@ -153,7 +153,7 @@ public class LevelManager3 : MonoBehaviour
         isGameover = false;
         isPaused = false;
         PlayerReference();
-        SceneManager.LoadScene("Level 2");
+        SceneManager.LoadScene("Level 3");
     }
 
     public void BackToMenu()

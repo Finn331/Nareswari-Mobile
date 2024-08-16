@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +24,8 @@ public class QuizSystem : MonoBehaviour
     [SerializeField] AudioClip kamuBenarClip;
     [SerializeField] AudioClip kamuSalahClip;
 
+    private bool isButtonPressed = false; // Penambahan variabel untuk mengecek apakah tombol sudah ditekan
+
     void Start()
     {
         // Initialization code
@@ -32,10 +33,13 @@ public class QuizSystem : MonoBehaviour
 
     public void TrueAnswer()
     {
+        if (isButtonPressed) return; // Cek apakah tombol sudah ditekan sebelumnya
+        isButtonPressed = true; // Set tombol menjadi sudah ditekan
+
         StartCoroutine(DeactivateQuizPanelWithDelay());
         Time.timeScale = 1;
         GameObject.Destroy(quizTrigger);
-        LeanTween.scale(kamuBenarImage, new Vector3(1, 1, 1), 1.3f).setEase(easingType);
+        LeanTween.scale(kamuBenarImage, new Vector3(0.69942f, 0.69942f, 0.69942f), 1.3f).setEase(easingType);
 
         if (levelsManager != null)
         {
@@ -67,12 +71,14 @@ public class QuizSystem : MonoBehaviour
         }
     }
 
-
     public void WrongAnswer()
     {
+        if (isButtonPressed) return; // Cek apakah tombol sudah ditekan sebelumnya
+        isButtonPressed = true; // Set tombol menjadi sudah ditekan
+
         StartCoroutine(DeactivateQuizPanelWithDelay());
         Time.timeScale = 1;
-        LeanTween.scale(kamuSalahImage, new Vector3(1, 1, 1), 1.3f).setEase(easingType);
+        LeanTween.scale(kamuSalahImage, new Vector3(0.69942f, 0.69942f, 0.69942f), 1.3f).setEase(easingType);
         if (levelsManager != null)
         {
             levelsManager.isPaused = false;

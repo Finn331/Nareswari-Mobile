@@ -15563,6 +15563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 3629064211522859482, guid: 3a1fd9bc8041fdd4497175725981aa65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3772127318474470362, guid: 3a1fd9bc8041fdd4497175725981aa65, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -21115,6 +21119,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4530842449832288698, guid: f1be5bc381a9a4c4a9a48c486dd52ae3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1306313716}
+    - target: {fileID: 4530842449832288698, guid: f1be5bc381a9a4c4a9a48c486dd52ae3, type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1127687328}
+    - target: {fileID: 4530842449832288698, guid: f1be5bc381a9a4c4a9a48c486dd52ae3, type: 3}
       propertyPath: playerStatus
       value: 
       objectReference: {fileID: 1306313719}
@@ -21149,6 +21161,10 @@ PrefabInstance:
     - target: {fileID: 8846524493850028415, guid: f1be5bc381a9a4c4a9a48c486dd52ae3, type: 3}
       propertyPath: m_Name
       value: 'Button Jump '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846524493850028415, guid: f1be5bc381a9a4c4a9a48c486dd52ae3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27331,6 +27347,10 @@ PrefabInstance:
     - target: {fileID: 5140548308839243794, guid: 0d234b96af5ab804e8387234202e1ee4, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5140548308839243794, guid: 0d234b96af5ab804e8387234202e1ee4, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 5891863278219405813, guid: 0d234b96af5ab804e8387234202e1ee4, type: 3}
       propertyPath: m_ClearFlags

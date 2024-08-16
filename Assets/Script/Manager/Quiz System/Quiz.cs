@@ -13,29 +13,25 @@ public class Quiz : MonoBehaviour
     public PlayerController playerController;
     public PlayerController playerController2;
     [SerializeField] private GameObject buttonInteract;
-    [SerializeField] Button interactionButton;
     [SerializeField] GameObject joystick;
     private bool playerInRange = false;
-
-    private void Awake()
-    {
-        // Registering event handler for the interactionButton
-        interactionButton.onClick.AddListener(OnInteractionButtonClicked);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            buttonInteract.SetActive(true);
-            LeanTween.scale(buttonInteract, new Vector3(1, 1, 1), 1f).setEase(LeanTweenType.easeOutBack);
+            if (buttonInteract != null)
+            {
+                buttonInteract.SetActive(true);
+                LeanTween.scale(buttonInteract, new Vector3(1, 1, 1), 1f).setEase(LeanTweenType.easeOutBack);
+            }
             playerInRange = true;
         }
     }
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && buttonInteract.activeSelf)
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && buttonInteract != null && buttonInteract.activeSelf)
         {
             OpenQuizPanel();
         }
@@ -51,64 +47,103 @@ public class Quiz : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began)
             {
-                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
-
-                if (hit.collider != null && hit.collider.gameObject == this.gameObject)
+                Camera cam = Camera.main;
+                if (cam != null)
                 {
-                    OpenQuizPanel();
+                    Vector2 touchPosition = cam.ScreenToWorldPoint(touch.position);
+                    RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+                    if (hit.collider != null && hit.collider.gameObject == this.gameObject)
+                    {
+                        OpenQuizPanel();
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Main Camera not found! Please ensure there is a camera tagged as 'MainCamera' in the scene.");
                 }
             }
         }
     }
 
-    private void OnInteractionButtonClicked()
-    {
-        if (playerInRange && buttonInteract.activeSelf)
-        {
-            OpenQuizPanel();
-        }
-    }
-
     private void OpenQuizPanel()
     {
-        quizPanel.SetActive(true);
+        if (quizPanel != null)
+        {
+            quizPanel.SetActive(true);
+            Debug.Log("Quiz panel opened.");
+        }
+        else
+        {
+            Debug.LogError("quizPanel is not assigned in the inspector.");
+        }
+
         Time.timeScale = 0;
         if (levelsManager != null)
         {
             levelsManager.isPaused = true;
+            Debug.Log("levelsManager paused.");
         }
 
         if (levelManager2 != null)
         {
             levelManager2.isPaused = true;
+            Debug.Log("levelManager2 paused.");
         }
 
         if (levelManager3 != null)
         {
             levelManager3.isPaused = true;
+            Debug.Log("levelManager3 paused.");
         }
 
-        joystick.SetActive(false);
-        playerController.enabled = false;
-        playerController2.enabled = false;
+        if (joystick != null)
+        {
+            joystick.SetActive(false);
+            Debug.Log("Joystick hidden.");
+        }
+
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+            Debug.Log("playerController disabled.");
+        }
+
+        if (playerController2 != null)
+        {
+            playerController2.enabled = false;
+            Debug.Log("playerController2 disabled.");
+        }
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        buttonInteract.SetActive(false);
+
+        if (buttonInteract != null)
+        {
+            buttonInteract.SetActive(false);
+            Debug.Log("buttonInteract hidden.");
+        }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            buttonInteract.SetActive(false);
-            LeanTween.scale(buttonInteract, new Vector3(0, 0, 0), 1f).setEase(LeanTweenType.easeOutBack);
+            if (buttonInteract != null)
+            {
+                buttonInteract.SetActive(false);
+                LeanTween.scale(buttonInteract, new Vector3(0, 0, 0), 1f).setEase(LeanTweenType.easeOutBack);
+            }
             playerInRange = false;
         }
     }
 
     private void OnDestroy()
     {
-        joystick.SetActive(true);
+        if (joystick != null)
+        {
+            joystick.SetActive(true);
+        }
     }
 }
