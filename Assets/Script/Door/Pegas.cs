@@ -21,14 +21,24 @@ public class Pegas : MonoBehaviour
     [SerializeField] private PlayerController playerController2;
 
     [SerializeField] private Animator penjaraAnim;
-    private Animator anim;
+    [SerializeField] Animator anim;
 
     private bool playerInTrigger = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        // Dapatkan referensi Animator dari child bernama "GFX"
+        Transform gfxTransform = transform.Find("GFX");
+        if (gfxTransform != null)
+        {
+            anim = gfxTransform.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogWarning("Child dengan nama 'GFX' tidak ditemukan.");
+        }
+
         interactionButton.onClick.AddListener(OnInteractionButtonClicked);
     }
 
